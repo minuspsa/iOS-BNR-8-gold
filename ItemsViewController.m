@@ -82,6 +82,7 @@
             cell.textLabel.text = @"No more items!";
         }
     }
+    cell.backgroundColor = [UIColor clearColor];
     
     return cell;
 }
@@ -120,11 +121,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background.jpg"]];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
-}
-
-- (NSInteger)countRowsInUITableSection: (UITableView *)tableView numberOfSection: (NSInteger)section {
-    return [tableView numberOfRowsInSection:section];
 }
 
 @end
