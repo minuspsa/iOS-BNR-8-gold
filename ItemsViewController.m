@@ -42,7 +42,7 @@
         return below50;
     }
     else if (section == 1) {
-        return above50;
+        return above50+1; //added 1 to write "No more items!" in the last section
     }
     
     return 0;
@@ -74,8 +74,13 @@
         cell.textLabel.text = outItem.description;
     }
     else if (indexPath.section == 1) {
-        outItem = itemsAbove50Bucks[indexPath.row];
-        cell.textLabel.text = outItem.description;
+        if (indexPath.row != itemsAbove50Bucks.count) {
+            outItem = itemsAbove50Bucks[indexPath.row];
+            cell.textLabel.text = outItem.description;
+        }
+        else {
+            cell.textLabel.text = @"No more items!";
+        }
     }
     
     return cell;
@@ -92,12 +97,13 @@
     return 0;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-    if (section == 1) {
-        return @"No more items!";
-    }
-    return 0;
-}
+//                                      Nie o to chodziło
+//- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+//    if (section == 1) {
+//        return @"No more items!";
+//    }
+//    return 0;
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
