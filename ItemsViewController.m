@@ -97,6 +97,19 @@
     return 0;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        return 20;
+    }
+    else if (indexPath.section == 1) {
+        if (indexPath.row == [self tableView:tableView numberOfRowsInSection:1]-1) {
+            return 44;
+        }
+        else return 20;
+    }
+    return 0;
+}
+
 //                                      Nie o to chodziło
 //- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
 //    if (section == 1) {
@@ -108,6 +121,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
+}
+
+- (NSInteger)countRowsInUITableSection: (UITableView *)tableView numberOfSection: (NSInteger)section {
+    return [tableView numberOfRowsInSection:section];
 }
 
 @end
